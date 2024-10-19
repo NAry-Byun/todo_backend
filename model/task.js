@@ -1,16 +1,20 @@
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const taskSchema = new schema({
-    tesk:{
-        type:String,
-        required:true
+const taskSchema = Schema(
+  {
+    task: {
+      type: String,
+      required: true,
     },
-    isCompleted:{
-        type:Boolean,
-        required:true
-    }
-});
+    isComplete: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  { timestamps: true } 
+);
 
-const Task = mogoose.model('Task',taskSchema);
+const Task = mongoose.model("Task", taskSchema);
+
 module.exports = Task;

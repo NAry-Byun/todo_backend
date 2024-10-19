@@ -1,9 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const taskApi = require("./task.api");
+const userApi = require("./user.api");
 
-// Define the /tasks route
-router.get('/tasks', (req, res) => {
-  res.json({ message: 'Tasks route works!' });
-});
+
+router.use("/tasks", taskApi);
+router.use("/user", userApi);
 
 module.exports = router;
