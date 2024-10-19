@@ -7,11 +7,15 @@ require("dotenv").config();
 
 const app = express();
 const MONGODB_URI_PROD = process.env.MONGODB_URI_PROD;
-console.log("mongoouri", MONGODB_URI_PROD);
 
-app.use(cors()); // 모든 출처 허용
 app.use(bodyParser.json());
-app.use("/api", indexRouter); // api 주소를 명확하게 구분하는 것이 좋음. 주소 앞에 api가 붙음
+app.use(cors());
+
+app.use("/api", indexRouter);
+
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
 
 const mongoURI = MONGODB_URI_PROD;
 
@@ -24,8 +28,6 @@ mongoose
     console.log("DB connection fail", err);
   });
 
-// Heroku가 제공하는 PORT 환경 변수를 사용해야 함 // 없을땐 http://localhost:9999주소 사용가능
-const PORT = process.env.PORT || 9999;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT || 4000, () => {
+  console.log("server on 4000");
 });
