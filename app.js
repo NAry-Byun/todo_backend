@@ -6,7 +6,7 @@ const indexRouter = require("./routes/index");
 require("dotenv").config();
 
 const app = express();
-const MONGODB_URI_PROD = process.env.MONGODB_URI_PROD;
+const MONGODB_URI_PROD = 'mongodb://localhost:27017/todo-demo';
 console.log("mongoouri", MONGODB_URI_PROD);
 
 app.use(cors()); // 모든 출처 허용
